@@ -27,12 +27,24 @@ import (
 func main() {
 	router := gin.Default()
 	docs.SwaggerInfo.BasePath = "/"
+
+	// Ping 路由
 	router.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
 		})
 	})
+
+	// Health 路由
+	router.GET("/health", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "success",
+		})
+	})
+
+	// Swagger 文档路由
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
+
 	if err := router.Run(); err != nil {
 		panic(err)
 	}
