@@ -9,5 +9,6 @@ repos:
   - repo: https://github.com/golangci/golangci-lint
     rev: v2.6.2
     hooks:
-      - id: golangci-lint
+      - id: golangci-lint-full
         args: [--fix]
+      - id: golangci-lint-fmt
